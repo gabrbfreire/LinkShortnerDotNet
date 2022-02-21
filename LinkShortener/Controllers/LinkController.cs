@@ -27,7 +27,8 @@ namespace LinkShortener.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetOriginalLink([FromRoute] String linkId)
+        [Route("/{linkId}")]
+        public IActionResult GetOriginalLink([FromRoute] string linkId)
         {
             return Ok("лол");
         }

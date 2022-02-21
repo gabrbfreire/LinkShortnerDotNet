@@ -9,8 +9,11 @@ namespace LinkShortener.Models
     public class Link
     {
         [Key]
+        [Required]
         public int Id { get; set; }
+        [Required]
         public string OriginalLink { get; set; }
+        [Required]
         public string ShortLink { get; set; }
     }
 }
