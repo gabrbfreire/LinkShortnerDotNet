@@ -28,8 +28,7 @@ namespace LinkShortener.Controllers
             return Created("https://localhost:5001/" + link.ShortLinkCode, link);
         }
 
-        [HttpGet]
-        [Route("/{linkId}")]
+        [HttpGet("{linkId}")]
         public IActionResult GetOriginalLink([FromRoute] string linkId)
         {
             if (linkId.All(char.IsLetterOrDigit))
