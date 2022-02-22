@@ -26,7 +26,7 @@ namespace LinkShortener.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ShortLink")
+                    b.Property<string>("ShortLinkCode")
                         .IsRequired()
                         .HasColumnType("text");
 

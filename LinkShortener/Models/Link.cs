@@ -14,6 +14,12 @@ namespace LinkShortener.Models
         [Required]
         public string OriginalLink { get; set; }
         [Required]
-        public string ShortLink { get; set; }
+        public string ShortLinkCode { get; set; }
+
+        public Link(string originalLink, string shortLinkCode)
+        {
+            OriginalLink = originalLink;
+            ShortLinkCode = shortLinkCode;
+        }
     }
 }

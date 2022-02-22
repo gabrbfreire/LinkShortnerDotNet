@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinkShortener.Migrations
 {
     [DbContext(typeof(LinkContext))]
-    [Migration("20220221184529_CreateTables")]
-    partial class CreateTables
+    [Migration("20220221233419_tables")]
+    partial class tables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace LinkShortener.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ShortLink")
+                    b.Property<string>("ShortLinkCode")
                         .IsRequired()
                         .HasColumnType("text");
 

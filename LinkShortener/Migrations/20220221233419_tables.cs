@@ -3,7 +3,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace LinkShortener.Migrations
 {
-    public partial class CreateTables : Migration
+    public partial class tables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace LinkShortener.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     OriginalLink = table.Column<string>(type: "text", nullable: false),
-                    ShortLink = table.Column<string>(type: "text", nullable: false)
+                    ShortLinkCode = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

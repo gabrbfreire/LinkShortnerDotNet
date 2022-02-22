@@ -1,4 +1,5 @@
 ﻿using LinkShortener.Models;
+using LinkShortener.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,17 +14,18 @@ namespace LinkShortener.Controllers
     [Route("/")]
     public class LinkController : ControllerBase
     {
-        private readonly ILogger<LinkController> _logger;
+        private LinkService _linkService;
 
-        public LinkController(ILogger<LinkController> logger)
+        public LinkController(LinkService linkService)
         {
-            _logger = logger;
+            _linkService = linkService;
         }
 
         [HttpPost]
         public IActionResult ShortenLink([FromBody] CreateShortLinkDto originalLink)
         {
-            return Ok("лол");
+            Link link = _linkService.CreateShortLink(originalLink.Link);
+            return Created("https://localhost:5001/" + link.ShortLinkCode, link);
         }
 
         [HttpGet]
