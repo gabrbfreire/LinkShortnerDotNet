@@ -26,5 +26,11 @@ namespace LinkShortener.Services
             _context.SaveChanges();
             return link;
         }
+
+        public string GetOriginalLink(string shortLinkCode)
+        {
+            Link link = _context.Links.FirstOrDefault(link => link.ShortLinkCode == shortLinkCode);
+            return link.OriginalLink;
+        }
     }
 }

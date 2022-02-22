@@ -14,17 +14,17 @@ namespace LinkShortener.Controllers
     [Route("/")]
     public class LinkController : ControllerBase
     {
-        private LinkService _linkService;
+        private LinkService _service;
 
         public LinkController(LinkService linkService)
         {
-            _linkService = linkService;
+            _service = linkService;
         }
 
         [HttpPost]
         public IActionResult ShortenLink([FromBody] CreateShortLinkDto originalLink)
         {
-            Link link = _linkService.CreateShortLink(originalLink.Link);
+            Link link = _service.CreateShortLink(originalLink.Link);
             return Created("https://localhost:5001/" + link.ShortLinkCode, link);
         }
 
@@ -32,7 +32,18 @@ namespace LinkShortener.Controllers
         [Route("/{linkId}")]
         public IActionResult GetOriginalLink([FromRoute] string linkId)
         {
-            return Ok("лол");
+            if (linkId.All(char.IsLetterOrDigit))
+            {
+                try
+                {
+                    return Redirect(_service.GetOriginalLink(linkId));
+                }
+                catch(NullReferenceException)
+                {
+                    return BadRequest("Invalid link id");
+                }
+            }
+            return BadRequest("Invalid link id");
         }
     }
 }
