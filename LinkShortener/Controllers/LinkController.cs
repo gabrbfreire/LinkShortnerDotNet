@@ -40,7 +40,7 @@ namespace LinkShortener.Controllers
                 }
                 catch(NullReferenceException)
                 {
-                    return BadRequest("Invalid link id");
+                    return NotFound();
                 }
             }
             return BadRequest("Invalid link id");
