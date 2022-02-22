@@ -1,6 +1,6 @@
 # LinkShortnerDotNet
 
-Simple link shortener
+Simple link shortener API
 
 Technologies:
 * C#
